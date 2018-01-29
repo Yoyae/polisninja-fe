@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<!--
+This file is part of Polis Ninja.
+https://github.com/Yoyae/polisninja-fe
+
+Polis Ninja is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Polis Ninja is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Polis Ninja.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>POLIS Ninja - Blocks Masternodes Payee</title>
+
+    <link rel="icon" href="/static/polisninja-favicon.ico" />
+    <link rel="icon" type="image/png" href="/static/polisninja-favicon.png" />
+    <link href="/static/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/polisninja-template-2.0.css" rel="stylesheet">
+    <link href="/static/datatables/datatables.min.css" rel="stylesheet">
+    <link href="/static/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="/static/html5shiv.min.js"></script>
+      <script src="/static/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+
+  <div id="wrapper">
+      <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/"><img style="margin-top: -13px; border-top: 0px; border-bottom: 0px; margin-right: 10px;" src="/static/polisninja-logo48x48.png" width="48" height="48" align="left"> POLIS Ninja</a>
+          </div>
+          <div class="collapse navbar-collapse navbar-collapse" role="navigation">
+              <ul class="nav navbar-nav navbar-right">
+                  <li class="active"><a href="/blocks.html"><i class="fa fa-link fa-fw" aria-hidden="true"></i> Blockhain</a></li>
+                  <li><a href="/masternodes.html"><i class="fa fa-server fa-fw" aria-hidden="true"></i> Masternodes</a></li>
+                  <li><a href="/governance.html"><i class="fa fa-balance-scale fa-fw" aria-hidden="true"></i> Governance</a></li>
+                  <li><a name="menuitemexplorer" href="https://explorer.polispay.org/"><i class="fa fa-search fa-fw" aria-hidden="true"></i> Explorer</a></li>
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-wrench fa-fw" aria-hidden="true"></i> Other Tools <span class="caret"></span></a>
+                      <ul class="dropdown-menu" role="menu">
+                          <li class="dropdown-header">Official Pages</li>
+                          <li><a href="https://polispay.org/">Polis Homepage</a></li>
+                          <li><a href="https://github.com/polispay/polis">Polis Github Sources</a></li>
+                          <li><a href="https://github.com/monacocoin-net/polis-core/releases">Polis Binaries</a></li>
+                          <li class="divider"></li>
+                          <li class="dropdown-header">Forums / Wiki</li>
+                          <li><a href="https://bitcointalk.org/index.php?topic=2627897">BitcoinTalk (BTC) - Polis ANN</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+          <!--/.nav-collapse -->
+          <div class="navbar-default sidebar" role="navigation">
+              <div class="nav-sidebar sidebar-nav">
+                  <ul class="nav" id="side-menu">
+                      <li><a href="#">Global Statistics</a></li>
+                      <li><a href="#perversion">Per Version Statistics</a></li>
+                      <li><a href="#perminer">Per Miner Statistics</a></li>
+                      <li><a href="#blocksdetail">Blocks Detail</a></li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+
+      <div id="page-wrapper">
+          <div class="row">
+              <div class="col-lg-12">
+                  <h1 class="page-header"><i class="fa fa-link" aria-hidden="true"></i> Blockchain Masternodes Payee <span class="badge badge-secondary">Links: <a href="/blocks.html"><i class="fa fa-link"></i></a><span name="polisninjatordisplay" style="display: none;"> - <a name="polisninjatorurl" href="#">Tor</a></span><span name="polisninjai2pdisplay" style="display: none;"> - <a name="polisninjai2purl" href="#">I2P</a></span></span> <span class="badge badge-danger" id="testnetalert" class="alert alert-danger" style="display: none">THIS IS TESTNET!</span></h1>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-4 col-md-8">
+                  <div class="panel panel-info">
+                      <div class="panel-heading">
+                          Polis Ninja info
+                      </div>
+                      <div class="panel-body">
+							Brought to you by <a class="badge badge-primary" href="https://github.com/Yoyae">Yoyae</a> / Time <span class="label label-info">GMT/UTC</span> / HTML <span class="label label-info">2.5.1</span> / JavaScript <span class="label label-danger" id="polisninjajsversion">required</span>
+                      </div>
+                      <div class="panel-footer">
+                          <span class="pull-left">Donations:</span>
+                          <span class="pull-right"><a href="https://explorer.polispay.org/address/PNAs38vz4b3jEsjbr8tKygtK4JmHwYDA8X">PNAs38vz4b3jEsjbr8tKygtK4JmHwYDA8X</a></span>
+                          <div class="clearfix"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+        <h2>Global Statistics</h2>
+        <p>Total supply for last 24h: <span id="globalsupplyamount" style="font-weight: bold;">????.?????? POLIS</span> (<span id="globalmnamount" style="font-weight: bold;">????.?????? POLIS</span> for masternodes, <span id="globalpayed" style="font-weight: bold;">???%</span> blocks payed, <span id="globalcorrectlypayed" style="font-weight: bold;">???%</span> of total blocks payed correctly [<span id="globalcurrentmnratio">??</span>% and latest protocol version]).</p>
+          </div>
+          <div class="row">
+              <h2 id="perversion">Per Version Statistics (last 24h)</h2>
+<div class="table-responsive">
+<table id="perversiontable" class="table table-striped table-condensed table-responsive text-nowrap">
+ <thead>
+  <tr>
+    <th>Version</th>
+    <th>Blocks</th>
+    <th>Amount</th>
+    <th>Paid blocks</th>
+    <th>All blocks</th>
+    <th>Paid blocks (Incorrect ratio)</th>
+    <th>Paid blocks (Correct ratio)</th>
+    <th>Population</th>
+    <th>Est.Earnings/MN/Day</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+    <td colspan="9">Please wait while loading... (JavaScript needed)</td>
+  </tr>
+ </tbody>
+</table>
+</div>
+          </div>
+          <div class="row">
+<h2 id="perminer">Per Miner Statistics (last 24h)</h2>
+<p>If you are a pool operator and see your pool is not showing green background everywhere below:</p><div class="table-responsive">
+<table class="table table-striped">
+ <thead>
+  <tr>
+    <th>Problem</th>
+    <th>Solution</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+    <td style="color:#FF0000; font-weight: bold">Bold red pool name/pubkey</td>
+    <td>You need to update <u>BOTH</u>:<br/><ul><li>Your mining software to include masternode payment (WIP) <li>Your polisd wallet software to latest version</li></ul>Remark: Failing to update BOTH will result in your blocks not been accepted as of next enforcement).</td>
+  </tr>
+  <tr>
+    <td style="background-color:#FF8f8F">Red background (<b>Payed to current protocol</b> field)</td>
+    <td>You need to update your polisd wallet software to latest version</td>
+  </tr>
+  <tr>
+    <td style="background-color:#FFcb8f">Orange background (<b>MN Payment ratio</b> field)</td>
+    <td>You need to update your mining software to include correct masternode payment ratio (it is an easy change)</td>
+  </tr>
+  <tr>
+    <td style="background-color:#FFFF8f">Yellow background</td>
+    <td>Should not be a problem (most probably you fixed one of the previous problems and the page is catching up).</td>
+  </tr>
+ </tbody>
+</table>
+<p>Don't hesitate in coming to polis <a href="https://discord.gg/9SB8vxx">Discord</a> for help if needed.<br><u>REMARK:</u> Failing to implement solution described means your blocks will be rejected by the network in the near future (= no payment).</p></div>
+<div class="table-responsive">
+<table id="perminertable" class="table table-striped table-condensed table-responsive text-nowrap">
+ <thead>
+  <tr>
+    <th>Miner<br/>(Pubkey if unknown)</th>
+    <th>Blocks<br/>Found</th>
+    <th>Percent<br/>Found</th>
+    <th>Blocks<br/>MN Payed</th>
+    <th>Percent<br/>MN Payed</th>
+    <th>Total Supply</th>
+    <th>MN Payment</th>
+    <th>MN Payment Ratio</th>
+    <th>Payed To Current Protocol</th>
+    <th>Payed Correctly</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+    <td colspan="10">Please wait while loading... (JavaScript needed)</td>
+  </tr>
+ </tbody>
+</table>
+</div>
+          </div>
+          <div class="row">
+
+          <h2 id="blocksdetail">Blocks Detail (last 24h)</h2>
+<div class="table-responsive">
+<table id="blockstable" class="table table-striped table-condensed table-responsive text-nowrap">
+ <thead>
+  <tr>
+    <th>Date&nbsp;Found</th>
+    <th>Height</th>
+    <th>Found&nbsp;by</th>
+    <th>Difficulty</th>
+    <th>Gen+Fees</th>
+    <th>MN&nbsp;Payment</th>
+    <th>MNP&nbsp;Ratio<br>Expected/Actual</th>
+    <th>MN&nbsp;Payee</th>
+    <th>Masternode&nbsp;version</th>
+    <th>Block&nbsp;PrivateSend<br>mixing&nbsp;Transactions</th>
+    <th>Mempool&nbsp;PrivateSend<br>mixing&nbsp;Transactions</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+    <td colspan="10">Please wait while loading... (JavaScript needed)</td>
+  </tr>
+ </tbody>
+</table>
+</div>
+<hr/>
+</div>
+<div id="footer">
+  <div class="container">
+      <p style="font-size:small;" align=right>Brought to you by <a class="badge badge-primary" href="https://github.com/Yoyae">Yoyae</a>. If this page is useful to you, spare some coin: <a href="https://explorer.polispay.org/address/PNAs38vz4b3jEsjbr8tKygtK4JmHwYDA8X">PNAs38vz4b3jEsjbr8tKygtK4JmHwYDA8X</a><br>Check source (<a href="/LICENSE">GPLv3</a>) on: <a href="https://github.com/Yoyae/polisninja-fe">GitHub</a>.</p>
+  </div>
+</div>
+      </div>
+  </div>
+    <script src="/static/jquery-3.2.1.min.js"></script>
+    <script src="/static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="/static/highcharts.js"></script>
+    <script src="/static/highcharts-more.js"></script>
+    <script src="/static/datatables/datatables.min.js"></script>
+    <script src="polisninja-config.js"></script>
+    <script src="polisninja-common.js"></script>
+    <script src="polisninja-blocks.js"></script>
+  </body>
+</html>
